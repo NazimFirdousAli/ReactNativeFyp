@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "976138002438",
+    "project_id": "ggi-web",
+    "storage_bucket": "ggi-web.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976138002438:android:34ddfe540db621389fe387",
+        "android_client_info": {
+          "package_name": "com.csdm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976138002438-ssgbnq8b4npval2ppp6lcl044tlv1hia.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAN2t-QxKDNIPqC_m_K66fGiZCuGtmmJBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976138002438-ssgbnq8b4npval2ppp6lcl044tlv1hia.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "976138002438-2biin77u7f2i8bprfka1bs3hda4oohjd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.csdm"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
