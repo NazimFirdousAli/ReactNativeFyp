@@ -8,7 +8,7 @@ import {
   AllData,
   Home,
   Setting,
-} from '../../Screens';
+} from '../../Screens/index';
 import Logout from '../../Screens/Auth/Logout';
 import FundRaising from '../../Screens/Home/FundRaising';
 

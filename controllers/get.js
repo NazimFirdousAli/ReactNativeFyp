@@ -48,7 +48,6 @@ const getShelterById = async (req, res) => {
 }
 
 const getFundById = async (req, res) => {
-
     try {
         const { params } = req
         const { id } = params
@@ -117,7 +116,7 @@ const getMissingPersonById = async (req, res) => {
             return res.send({ success: false, message: 'Request Params is missing!', })
         }
 
-        await MissingPerson?.find({ _id: id, isDeleted: false }, async (err, data) => {
+        await MissingPerson?.find({ userId: id, isDeleted: false }, async (err, data) => {
             if (err || !data) {
                 return res.send({ success: false, message: 'No MissingPerson found!', })
             }
@@ -129,7 +128,6 @@ const getMissingPersonById = async (req, res) => {
 }
 
 const getVolunteerById = async (req, res) => {
-
     try {
         const { params } = req
         const { id } = params
@@ -138,7 +136,7 @@ const getVolunteerById = async (req, res) => {
             return res.send({ success: false, message: 'Request Params is missing!', })
         }
 
-        await Volunteer?.find({ _id: id, isDeleted: false }, async (err, data) => {
+        await Volunteer?.find({ userId: id, isDeleted: false }, async (err, data) => {
             if (err || !data) {
                 return res.send({ success: false, message: 'No Volunteer found!', })
             }

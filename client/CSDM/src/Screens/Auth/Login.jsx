@@ -79,6 +79,8 @@ const Login = () => {
                 isAdmin: false,
               });
               setLoading(false);
+              setEmail('')
+              setPassword('')
             } else {
               errorMessage("Invalid Credentials");
               console.log('runing');

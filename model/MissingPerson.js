@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
-const { DATE_REQUIRED, BOOLEAN_DEFAULT } = require("./SchemaType");
+const { DATE_REQUIRED, BOOLEAN_DEFAULT, REF_OBJECT_ID_REQUIRED } = require("./SchemaType");
 
 const MissingPersonSchema = new mongoose.Schema({
+    userId: REF_OBJECT_ID_REQUIRED('users'),
     name: {
         type: String,
         required: true,

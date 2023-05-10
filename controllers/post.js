@@ -161,7 +161,7 @@ const createMissingPerson = async (req, res) => {
             Missing_Place,
             Missing_Date,
             DressDescription,
-            Identification_Symbol, image
+            Identification_Symbol, image,userId
         } = body
         console.log('body', body)
 
@@ -172,7 +172,7 @@ const createMissingPerson = async (req, res) => {
             || !Missing_Date
             || !DressDescription
             || !Identification_Symbol
-            || !image) {
+            || !image ||!userId) {
             return res.send({ success: false, message: 'Please provide All fields!' })
         }
 
@@ -181,7 +181,7 @@ const createMissingPerson = async (req, res) => {
         await newMissingPerson.save()
             .then((s) => {
                 console.log('s', s)
-                return res.send({ success: true, message: 'MissingPerson created successfully!' })
+                return res.send({ success: true, message: 'Missing Person created successfully!' })
             })
             .catch(e => {
                 console.log('e', e)
@@ -206,6 +206,7 @@ const createVolunteer = async (req, res) => {
             Contact_Info,
             Address,
             image,
+            userId
         } = body
         console.log('body', body)
         console.log('fields', !name,
@@ -215,7 +216,8 @@ const createVolunteer = async (req, res) => {
             !Availibility,
             !Contact_Info,
             !Address,
-            !image)
+            !image,
+            !userId)
 
         if (!name ||
             !age ||

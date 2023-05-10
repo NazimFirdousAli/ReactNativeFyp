@@ -32,7 +32,6 @@ const Setting = () => {
   const states = useSelector(state => state);
   let userId = states?.authReducer?.user?._id;
 
-  console.log(VolunteerData, '=======');
   let getFunds = () => {
     axios
       .get(`${GET.GET_FUND_BY_ID}/${userId}`)

@@ -48,6 +48,11 @@ const Add = () => {
   const [loading, setLoading] = useState('');
   const [imagePath, setImagePath] = useState('');
 
+  
+  const states = useSelector(state => state);
+  let userId = states?.authReducer?.user?._id;
+
+
   const resetFeild = () => {
     setname('');
     setAge('');
@@ -110,6 +115,7 @@ const Add = () => {
         DressDescription: DressDescription,
         Identification_Symbol: Identification_Symbol,
         image: imagePath,
+        userId:userId
       };
 
       axios

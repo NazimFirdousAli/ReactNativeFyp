@@ -81,7 +81,6 @@ const FundRaising = () => {
             alert('Succesfully Added Fund');
           } else {
             setLoading(false);
-
             console.log('runing');
           }
           resetFeild();

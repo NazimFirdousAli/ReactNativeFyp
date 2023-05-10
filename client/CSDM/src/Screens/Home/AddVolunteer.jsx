@@ -34,6 +34,9 @@ const FundRaising = () => {
   const [AreaOfIntrest, setAreaOfIntrest] = useState('');
   const [imagePath, setImagePath] = useState('');
 
+  const states = useSelector(state => state);
+  let userId = states?.authReducer?.user?._id;
+
   const resetFeild = () => {
     setName('');
     setCNIC('');
@@ -78,7 +81,8 @@ const FundRaising = () => {
       !Contact_Info ||
       !AreaOfIntrest ||
       !Age ||
-      !imagePath
+      !imagePath ||
+      !userId     
     ) {
       errorMessage('Please fill all field!');
       setLoading(false);
@@ -95,7 +99,10 @@ const FundRaising = () => {
         Contact_Info: Contact_Info,
         Address: Address,
         image: imagePath,
+        userId: userId
       };
+
+      console.log(data,"-----------")
 
       axios
         .post(POST.VOLUNTEER, data)
@@ -108,7 +115,6 @@ const FundRaising = () => {
             resetFeild();
           } else {
             setLoading(false);
-
             console.log('runing');
           }
         })
