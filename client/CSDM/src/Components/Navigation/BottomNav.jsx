@@ -1,5 +1,6 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import React, {useState, useEffect} from 'react';
+import {Image} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {
   Add,
@@ -11,6 +12,7 @@ import {
 } from '../../Screens/index';
 import Logout from '../../Screens/Auth/Logout';
 import FundRaising from '../../Screens/Home/FundRaising';
+import {View} from 'react-native';
 
 const BottomNav = ({route}) => {
   const {Navigator, Screen} = createDrawerNavigator();

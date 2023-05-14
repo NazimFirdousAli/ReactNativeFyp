@@ -131,7 +131,6 @@ const Add = () => {
         .then(res => {
           if (res?.data?.success) {
             successMessage(res?.data?.message);
-            console.log('===============');
             setLoading(false);
             alert('Shelter Added Succesfully');
           } else {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import {FUNDRAISING} from '../../Config/paths';
 import {BLACK, HEIGHT, LIGHT_BLUE, WHITE} from '../../Utils/constant';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -9,6 +9,17 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const Home = ({navigation}) => {
   return (
     <View style={loginStyle.main}>
+      <Image
+        source={require('../../Assets/logo.png')}
+        style={{
+          alignSelf: 'center',
+          width: '30%',
+          height: '15%',
+          resizeMode: 'stretch',
+          marginTop: -80,
+          marginBottom: 50,
+        }}
+      />
       <View style={{width: '80%'}}>
         <TouchableOpacity
           onPress={() => {

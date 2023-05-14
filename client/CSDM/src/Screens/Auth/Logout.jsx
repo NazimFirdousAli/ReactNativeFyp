@@ -16,6 +16,7 @@ const Logout = ({navigation}) => {
       setLoading(false);
       navigation.navigate(LOGIN);
     }, 5000);
+    
   };
   return (
     <View

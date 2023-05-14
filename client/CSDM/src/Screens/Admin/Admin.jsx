@@ -77,7 +77,6 @@ const Admin = () => {
         }
       })
       .catch(e => {
-        console.log('e', e);
         setLoading(false);
         errorMessage('Oops someting went wrong!');
       });
@@ -621,7 +620,7 @@ const loginStyle = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     width: '100%',
-    paddingTop: 10,
+    paddingTop: 20,
     paddingBottom: 50,
     backgroundColor: '#0077b6',
   },

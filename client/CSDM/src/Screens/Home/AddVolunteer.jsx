@@ -102,8 +102,6 @@ const FundRaising = () => {
         userId: userId
       };
 
-      console.log(data,"-----------")
-
       axios
         .post(POST.VOLUNTEER, data)
         .then(res => {

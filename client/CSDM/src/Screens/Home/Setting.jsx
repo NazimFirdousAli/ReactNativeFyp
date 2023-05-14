@@ -12,15 +12,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import {useSelector} from 'react-redux';
 import {Loading} from '../../Components';
 import {GET, POST} from '../../Utils/api';
-import {
-  BLACK,
-  DARK_GREEN,
-  FONT_SIZE,
-  HEIGHT,
-  INPUT_BORDER_COLOR,
-  TEXT_GRAY,
-  WHITE,
-} from '../../Utils/constant';
+import {BLACK, TEXT_GRAY, WHITE} from '../../Utils/constant';
 import {errorMessage, successMessage} from '../../Utils/helpers';
 
 const Setting = () => {
@@ -63,7 +55,6 @@ const Setting = () => {
     axios
       .get(`${GET.GET_VOLUNTEER_BY_ID}/${userId}`)
       .then(res => {
-        console.log(res.data, '----');
         const {data} = res;
         if (data?.success) {
           setVolunteerData(data?.data);
@@ -202,7 +193,7 @@ const Setting = () => {
             style={{
               fontSize: 20,
               fontWeight: 'bold',
-              color: BLACK,
+              color: WHITE,
               padding: 10,
             }}>
             Shelter
@@ -311,7 +302,7 @@ const Setting = () => {
             style={{
               fontSize: 20,
               fontWeight: 'bold',
-              color: BLACK,
+              color: WHITE,
               padding: 10,
             }}>
             Fundraising
@@ -399,13 +390,14 @@ const Setting = () => {
           {loading ? <Loading /> : null}
         </View>
       </View>
+
       <View style={loginStyle.main}>
         <View style={{...loginStyle.cardsContainer}}>
           <Text
             style={{
               fontSize: 20,
               fontWeight: 'bold',
-              color: BLACK,
+              color: WHITE,
               padding: 10,
             }}>
             Missing Person
@@ -421,17 +413,34 @@ const Setting = () => {
               <>
                 {missingData?.map(v => {
                   return (
-                    <View
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                      }}>
+                    <View style={{...loginStyle.card}}>
                       <View
                         style={{
-                          ...loginStyle.card,
+                          display: 'flex',
+                          flexDirection: 'column',
+                        }}>
+                        <Image
+                          source={{
+                            uri: `https://firebasestorage.googleapis.com/v0/b/ggi-web.appspot.com/o/missing_person%2F${v?.image}?alt=media&token=4d4135b6-b08b-46d0-8117-b3702a824947`,
+                          }}
+                          style={{
+                            alignSelf: 'center',
+                            width: '100%',
+                            height: '65%',
+                            resizeMode: 'stretch',
+                          }}
+                        />
+                      </View>
+                      <View
+                        style={{
+                          marginTop: -50,
+                          padding: 10,
+                          display: 'flex',
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
                         }}>
                         <Text style={{fontSize: 14, color: BLACK}}>
-                          {v && new Date(v?.createdAt).toDateString()}
+                          {v && new Date(v?.created_at).toDateString()}
                         </Text>
                         <TouchableOpacity
                           onPress={() => deleteMissingPerson(v?._id)}>
@@ -448,31 +457,19 @@ const Setting = () => {
                           display: 'flex',
                           flexDirection: 'row',
                         }}>
-                        <View>
-                          <Image
-                            source={{
-                              uri: `https://firebasestorage.googleapis.com/v0/b/ggi-web.appspot.com/o/missing_person%2F${v?.image}?alt=media&token=4d4135b6-b08b-46d0-8117-b3702a824947`,
-                            }}
-                            style={{
-                              alignSelf: 'center',
-                              color: 'grey',
-                              marginLeft: 3,
-                            }}
-                          />
-                        </View>
                         <View style={{marginLeft: 10}}>
                           <Text style={{color: TEXT_GRAY}}>
-                            {v && v?.fullName}
+                            Persosn name: {v.name}
                           </Text>
-                          <Text style={{color: TEXT_GRAY}}>{v && v?.name}</Text>
                         </View>
                       </View>
-                      <View style={{padding: 10, marginLeft: 10}}>
+                      <View style={{paddingLeft: 10, marginLeft: 10}}>
                         <Text style={{color: TEXT_GRAY}}>
                           Dress Description: {`${v?.DressDescription}`}{' '}
                         </Text>
                         <Text style={{color: TEXT_GRAY}}>
-                          Missing Date: {`${v?.Missing_Date}`}{' '}
+                          Missing Date:{' '}
+                          {v && new Date(v?.Missing_Date).toDateString()}{' '}
                         </Text>
                         <Text style={{color: TEXT_GRAY}}>
                           Missing Place: {`${v?.Missing_Place}`}
@@ -505,13 +502,14 @@ const Setting = () => {
           )}
         </View>
       </View>
+
       <View style={loginStyle.main}>
         <View style={{...loginStyle.cardsContainer}}>
           <Text
             style={{
               fontSize: 20,
               fontWeight: 'bold',
-              color: BLACK,
+              color: WHITE,
               padding: 10,
             }}>
             Volunteer
@@ -522,25 +520,42 @@ const Setting = () => {
               showsVerticalScrollIndicator={false}
               style={{
                 paddingHorizontal: 5,
-                marginBottom: 50,
               }}
               horizontal>
               <>
-                {VolunteerData?.map((v, index) => {
+                {VolunteerData?.map(v => {
                   return (
                     <View style={{...loginStyle.card}}>
                       <View
                         style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                        }}>
+                        <Image
+                          source={{
+                            uri: `https://firebasestorage.googleapis.com/v0/b/ggi-web.appspot.com/o/volunteer%2F${v?.image}?alt=media&token=4d4135b6-b08b-46d0-8117-b3702a824947`,
+                          }}
+                          style={{
+                            alignSelf: 'center',
+                            width: '100%',
+                            height: '65%',
+                            resizeMode: 'stretch',
+                          }}
+                        />
+                      </View>
+                      <View
+                        style={{
+                          marginTop: -50,
                           padding: 10,
                           display: 'flex',
                           flexDirection: 'row',
                           justifyContent: 'space-between',
                         }}>
                         <Text style={{fontSize: 14, color: BLACK}}>
-                          {v && new Date(v?.createdAt).toDateString()}
+                          {v && new Date(v?.created_at).toDateString()}
                         </Text>
                         <TouchableOpacity
-                          onPress={() => deleteVolunteer(v?._id)}>
+                          onPress={() => deleteMissingPerson(v?._id)}>
                           <Feather
                             name={'delete'}
                             size={20}
@@ -554,25 +569,16 @@ const Setting = () => {
                           display: 'flex',
                           flexDirection: 'row',
                         }}>
-                        <View>
-                          {console.log(v, '=======')}
-                          <Image
-                            source={{
-                              uri: `https://firebasestorage.googleapis.com/v0/b/ggi-web.appspot.com/o/volunteer%2F${v?.image}?alt=media&token=4d4135b6-b08b-46d0-8117-b3702a824947`,
-                            }}
-                            style={{
-                              alignSelf: 'center',
-                              color: 'grey',
-                              marginLeft: 3,
-                            }}
-                          />
-                        </View>
                         <View style={{marginLeft: 10}}>
-                          <Text style={{color: TEXT_GRAY}}>{v && v?.name}</Text>
-                          <Text style={{color: TEXT_GRAY}}>{v && v?.CNIC}</Text>
+                          <Text style={{color: TEXT_GRAY}}>
+                            Person Name: {v && v?.name}
+                          </Text>
+                          <Text style={{color: TEXT_GRAY}}>
+                            Person CNIC: {v && v?.CNIC}
+                          </Text>
                         </View>
                       </View>
-                      <View style={{padding: 10, marginLeft: 10}}>
+                      <View style={{paddingLeft: 10, marginLeft: 10}}>
                         <Text style={{color: TEXT_GRAY}}>
                           Area Of Intrest: {`${v?.AreaOfIntrest}`}{' '}
                         </Text>
@@ -605,8 +611,6 @@ const Setting = () => {
               </Text>
             </View>
           )}
-
-          {loading ? <Loading /> : null}
         </View>
       </View>
     </ScrollView>
@@ -621,9 +625,9 @@ const loginStyle = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     width: '100%',
-    paddingTop: 10,
+    paddingTop: 20,
     paddingBottom: 50,
-    backgroundColor: WHITE,
+    backgroundColor: '#0077b6',
   },
   menuContainer: {
     shadowColor: '#000',
@@ -650,7 +654,7 @@ const loginStyle = StyleSheet.create({
   cardsContainer: {
     // height: '100%',
     width: '100%',
-    paddingBottom: '1%',
+    // paddingBottom: '1%',
     paddingLeft: 5,
     paddingRight: 5,
   },
